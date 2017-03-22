@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @reward.title %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @reward.message %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @reward.priority %>
+</p>
+
+<%= link_to 'Edit', edit_reward_path(@reward) %> |
+<%= link_to 'Back', rewards_path %>

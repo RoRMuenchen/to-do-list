@@ -36,6 +36,11 @@
     <%= f.check_box :done %>
   </div>
 
+    <div class="field">
+    <%= f.label :reward %>
+    <%= f.collection_select :reward_id, Reward.all.order('Priority'), :id, :title %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

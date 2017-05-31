@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= f.label :due_date %>
-    <%= f.datetime_select :due_date %>
+    <%= f.datetime_select :due_date, start_year: Date.today.year, default: 1.days.from_now %>
   </div>
 
   <div class="field">

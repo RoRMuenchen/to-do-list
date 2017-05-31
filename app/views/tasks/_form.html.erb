@@ -28,7 +28,24 @@
 
  <div>
   <%= f.label :priority %>
-   <%= f.range_field :priority, :min=>-1, :max=>1, :class=>"slide", :id=>"slider1"%>
+   <%= f.range_field :priority, :min=>-1, :max=>1, :class=>"slide", :id=>"priority", :onchange=>"updatePriority()"%>
+   <p id="priorityDisplay"></p>
+   <script type="text/javascript">
+    function updatePriority() {
+      var x = document.getElementById("priority").value;
+      if (x == -1) {
+        x = "uh ... another time";
+      }
+      else if (x == 0) {
+        x = "should get it done";
+      }
+      else {
+        x = "urgent";
+      }
+      document.getElementById("priorityDisplay").innerHTML = x;
+    }
+    updatePriority();
+   </script>
  </div>
 
   <div class="field">

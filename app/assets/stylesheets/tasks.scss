@@ -8,4 +8,9 @@
   .done h3 {
     text-decoration: line-through;
   }
+
+h3[data-priority='1.0']{
+  color:red
+
+}
 }

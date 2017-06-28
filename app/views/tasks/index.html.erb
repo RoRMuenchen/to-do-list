@@ -5,7 +5,7 @@
     <% @tasks.each do |task| %>
       <li class="<%= task.done ?  :done : :todo %>">
         <h3 data-priority="<%= task.priority %>"><%= task.name %></h3>
-        <time><%= task.due_date %></time>
+        <time><%= task_due_date_in_words(task) %> </time>
         <span><%= task.priority %></span>
         <span><%= task.done %></span>
         <span><%= link_to 'Show', task %></span>

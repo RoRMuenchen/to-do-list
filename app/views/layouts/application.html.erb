@@ -19,6 +19,12 @@
       </button>
       <a class="navbar-brand" href="/tasks">To-Do-List</a>
     </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/tasks"><span><%= Task.where(done:false).count %></span> Task(s)</a></li>
+        <li><a href="/rewards">Rewards</a></li>
+        <li><a href="/tasks/new">New Task</a></li>
+      </ul>
     </div>
   </div>
 </nav>

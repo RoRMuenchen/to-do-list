@@ -1,5 +1,6 @@
 class Task < ApplicationRecord
     has_one :reward
+
     validates :name, presence: true
     validate :due_date_cannot_be_in_the_past, on: :create
 

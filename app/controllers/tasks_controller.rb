@@ -4,7 +4,9 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    tasks_done = Task.where(done: true)
+    tasks_pending = Task.where(done: [nil, false]).order(priority: :desc, due_date: :asc)
+    @tasks = tasks_pending + tasks_done
   end
 
   # GET /tasks/1

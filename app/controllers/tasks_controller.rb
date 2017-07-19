@@ -64,14 +64,19 @@ class TasksController < ApplicationController
   def toggle
     if @task.done
       @task.done = false
+      message = 'Task was marked as to do'
     else
       @task.done = true
+      message = 'Task was succesfully completed'
     end
-    @task.save
-
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Task was successfully completed.' }
-      format.json { head :no_content }
+      if @task.save
+        format.html { redirect_to tasks_url, notice: message }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to tasks_url, notice: 'Something went wrong!' }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
     end
   end
 

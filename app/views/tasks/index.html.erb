@@ -10,6 +10,7 @@
         <span><%= task.done %></span>
         <span><%= link_to 'Show', task %></span>
         <span><%= link_to 'Edit', edit_task_path(task) %></span>
+        <span><%= link_to 'Done', toggle_task_path(task), method: :post %></span>
         <span><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></span>
       </li>
     <% end %>

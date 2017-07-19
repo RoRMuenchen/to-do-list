@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :toggle, :destroy]
 
   # GET /tasks
   # GET /tasks.json
@@ -57,6 +57,20 @@ class TasksController < ApplicationController
     @task.destroy
     respond_to do |format|
       format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def toggle
+    if @task.done
+      @task.done = false
+    else
+      @task.done = true
+    end
+    @task.save
+
+    respond_to do |format|
+      format.html { redirect_to tasks_url, notice: 'Task was successfully completed.' }
       format.json { head :no_content }
     end
   end

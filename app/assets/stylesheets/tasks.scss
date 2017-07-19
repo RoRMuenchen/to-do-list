@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #tasklist {
+  list-style-type: none;
   .todo h3 {
     font-weight: bold;
   }
@@ -9,8 +10,11 @@
     text-decoration: line-through;
   }
 
-h3[data-priority='1.0']{
-  color:red
-
-}
+  h3[data-priority='1.0'] a {
+    color: red;
+  }
+  .toggle_checkbox {
+    float: left;
+    margin: 10px;
+  }
 }

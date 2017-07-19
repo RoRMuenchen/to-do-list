@@ -4,13 +4,11 @@
 <ul id="tasklist">
     <% @tasks.each do |task| %>
       <li class="<%= task.done ?  :done : :todo %>">
-        <h3 data-priority="<%= task.priority %>"><%= task.name %></h3>
+        <span><%= link_to content_tag(:span, nil, class: ["glyphicon", "toggle_checkbox", "glyphicon-#{task.done ?  :check : :unchecked}"], 'aria-hidden': true), toggle_task_path(task), method: :post %></span>
+        <h3 data-priority="<%= task.priority %>"><%= link_to task.name, edit_task_path(task) %></h3>
         <time><%= task_due_date_in_words(task) %> </time>
         <span><%= task.priority %></span>
         <span><%= task.done %></span>
-        <span><%= link_to 'Show', task %></span>
-        <span><%= link_to 'Edit', edit_task_path(task) %></span>
-        <span><%= link_to 'Done', toggle_task_path(task), method: :post %></span>
         <span><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></span>
       </li>
     <% end %>

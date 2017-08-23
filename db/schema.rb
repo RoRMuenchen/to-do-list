@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170322195613) do
+ActiveRecord::Schema.define(version: 20170823181004) do
 
   create_table "rewards", force: :cascade do |t|
     t.string   "title"
@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(version: 20170322195613) do
     t.text     "description"
     t.datetime "due_date"
     t.decimal  "priority"
-    t.boolean  "done"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "done",        default: false, null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "reward_id"
     t.index ["reward_id"], name: "index_tasks_on_reward_id"
   end

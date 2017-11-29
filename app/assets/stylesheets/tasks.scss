@@ -14,6 +14,25 @@
     }
   }
 
+  @keyframes thumbwobble {
+    from {-webkit-transform: rotate(0deg);
+    }
+    to {-webkit-transform: rotate(30deg);
+      font-size: 9em;
+    }
+
+  }
+  .thumbsup {
+    animation-name: thumbwobble;
+    animation-duration:0.5s;
+    animation-direction: alternate;
+    animation-iteration-count: 4;
+    font-size: 6em;
+    display: inline-block;
+    border: 2px solid red;
+
+  }
+
   .done *, .done a {
     color: grey;
   }
@@ -23,5 +42,3 @@
     margin: 10px;
   }
 }
-
-

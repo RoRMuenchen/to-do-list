@@ -1,9 +1,12 @@
 <p id="notice"><%= notice %></p>
 
+
+
 <title>To-Do-List</title>
 <ul id="tasklist">
     <% @tasks.each do |task| %>
       <li class="<%= task.done ?  :done : :todo %>" data-priority="<%= task.priority %>">
+        <span class="thumbsup" >👍</span>
         <span class="taskcheckbox"><%= link_to content_tag(:span, nil, class: ["glyphicon", "toggle_checkbox", "glyphicon-#{task.done ?  :check : :unchecked}"], 'aria-hidden': true), toggle_task_path(task), method: :post %></span>
         <h3 class="taskname"><%= link_to task.name, edit_task_path(task) %></h3>
         <time><%= task_due_date_in_words(task) %> </time>

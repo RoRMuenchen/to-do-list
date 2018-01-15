@@ -1,8 +1,18 @@
 // Place all the styles related to the tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  background: black;
+  color: white;
+}
+
+.list-container {
+  margin-top: 70px;
+}
+
 #tasklist {
   list-style-type: none;
+  z-index: 10;
   a, a:visited, a:hover {
     color: #212121;
     background: none;
@@ -15,21 +25,31 @@
   }
 
   @keyframes thumbwobble {
-    from {-webkit-transform: rotate(0deg);
+    0% {-webkit-transform: rotate(0deg);
+      opacity: 1;
+      font-size: 6em;
     }
-    to {-webkit-transform: rotate(30deg);
+    50% {-webkit-transform: rotate(30deg);
       font-size: 9em;
+      opacity: 1;
+    }
+    90% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
     }
 
   }
   .thumbsup {
     animation-name: thumbwobble;
-    animation-duration:0.5s;
-    animation-direction: alternate;
-    animation-iteration-count: 4;
-    font-size: 6em;
+    animation-duration:2s;
+    animation-iteration-count: 1;
+    font-size: 0em;
     display: inline-block;
-    border: 2px solid red;
+    opacity: 0;
+    float: left;
+    //border: 2px solid red;
 
   }
 
@@ -41,4 +61,13 @@
     float: left;
     margin: 10px;
   }
+}
+
+#canvas {
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }

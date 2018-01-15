@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    tasks_done = Task.where(done: true)
+    tasks_done = Task.where(done: true).order(updated_at: :desc)
     tasks_pending = Task.where(done: [nil, false]).order(priority: :desc, due_date: :asc)
     @tasks = tasks_pending + tasks_done
   end
@@ -70,16 +70,23 @@ class TasksController < ApplicationController
     else
       @task.done = true
       message = 'Task was succesfully completed'
+      last_checked = @task.id
     end
+    if @task.priority == 1 and @task.done           #fireworks
+      fireworks = true
+    end
+
     respond_to do |format|
       if @task.save
-        format.html { redirect_to tasks_url, notice: message }
+        format.html { redirect_to tasks_url, notice: message, flash: { last_checked: last_checked, fireworks: fireworks }}
         format.json { head :no_content }
       else
         format.html { redirect_to tasks_url, notice: 'Something went wrong!' }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
+
+
   end
 
   private
